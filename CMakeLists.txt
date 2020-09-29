@@ -1,0 +1,181 @@
+cmake_minimum_required(VERSION 3.17)
+project(csci_366_fall2020_private)
+
+set(CMAKE_CXX_STANDARD 14)
+
+include_directories(battlebit/googletest/lib/googlemock/include)
+include_directories(battlebit/googletest/lib/googlemock/include/gmock)
+include_directories(battlebit/googletest/lib/googlemock/include/gmock/internal)
+include_directories(battlebit/googletest/lib/googlemock/include/gmock/internal/custom)
+include_directories(battlebit/googletest/lib/googlemock/test)
+include_directories(battlebit/googletest/lib/googletest/include)
+include_directories(battlebit/googletest/lib/googletest/include/gtest)
+include_directories(battlebit/googletest/lib/googletest/include/gtest/internal)
+include_directories(battlebit/googletest/lib/googletest/include/gtest/internal/custom)
+include_directories(battlebit/googletest/lib/googletest/samples)
+include_directories(battlebit/googletest/lib/googletest/src)
+include_directories(battlebit/googletest/lib/googletest/test)
+include_directories(battlebit/src)
+
+add_executable(csci_366_fall2020_private
+        battlebit/googletest/lib/googlemock/include/gmock/internal/custom/gmock-generated-actions.h
+        battlebit/googletest/lib/googlemock/include/gmock/internal/custom/gmock-matchers.h
+        battlebit/googletest/lib/googlemock/include/gmock/internal/custom/gmock-port.h
+        battlebit/googletest/lib/googlemock/include/gmock/internal/gmock-internal-utils.h
+        battlebit/googletest/lib/googlemock/include/gmock/internal/gmock-port.h
+        battlebit/googletest/lib/googlemock/include/gmock/internal/gmock-pp.h
+        battlebit/googletest/lib/googlemock/include/gmock/gmock-actions.h
+        battlebit/googletest/lib/googlemock/include/gmock/gmock-cardinalities.h
+        battlebit/googletest/lib/googlemock/include/gmock/gmock-function-mocker.h
+        battlebit/googletest/lib/googlemock/include/gmock/gmock-generated-actions.h
+        battlebit/googletest/lib/googlemock/include/gmock/gmock-matchers.h
+        battlebit/googletest/lib/googlemock/include/gmock/gmock-more-actions.h
+        battlebit/googletest/lib/googlemock/include/gmock/gmock-more-matchers.h
+        battlebit/googletest/lib/googlemock/include/gmock/gmock-nice-strict.h
+        battlebit/googletest/lib/googlemock/include/gmock/gmock-spec-builders.h
+        battlebit/googletest/lib/googlemock/include/gmock/gmock.h
+        battlebit/googletest/lib/googlemock/src/gmock-all.cc
+        battlebit/googletest/lib/googlemock/src/gmock-cardinalities.cc
+        battlebit/googletest/lib/googlemock/src/gmock-internal-utils.cc
+        battlebit/googletest/lib/googlemock/src/gmock-matchers.cc
+        battlebit/googletest/lib/googlemock/src/gmock-spec-builders.cc
+        battlebit/googletest/lib/googlemock/src/gmock.cc
+        battlebit/googletest/lib/googlemock/src/gmock_main.cc
+        battlebit/googletest/lib/googlemock/test/gmock-actions_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock-cardinalities_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock-function-mocker_nc.cc
+        battlebit/googletest/lib/googlemock/test/gmock-function-mocker_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock-generated-actions_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock-generated-matchers_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock-internal-utils_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock-matchers_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock-more-actions_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock-nice-strict_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock-port_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock-pp-string_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock-pp_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock-spec-builders_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock_all_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock_ex_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock_leak_test_.cc
+        battlebit/googletest/lib/googlemock/test/gmock_link2_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock_link_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock_link_test.h
+        battlebit/googletest/lib/googlemock/test/gmock_output_test_.cc
+        battlebit/googletest/lib/googlemock/test/gmock_stress_test.cc
+        battlebit/googletest/lib/googlemock/test/gmock_test.cc
+        battlebit/googletest/lib/googletest/include/gtest/internal/custom/gtest-port.h
+        battlebit/googletest/lib/googletest/include/gtest/internal/custom/gtest-printers.h
+        battlebit/googletest/lib/googletest/include/gtest/internal/custom/gtest.h
+        battlebit/googletest/lib/googletest/include/gtest/internal/gtest-death-test-internal.h
+        battlebit/googletest/lib/googletest/include/gtest/internal/gtest-filepath.h
+        battlebit/googletest/lib/googletest/include/gtest/internal/gtest-internal.h
+        battlebit/googletest/lib/googletest/include/gtest/internal/gtest-param-util.h
+        battlebit/googletest/lib/googletest/include/gtest/internal/gtest-port-arch.h
+        battlebit/googletest/lib/googletest/include/gtest/internal/gtest-port.h
+        battlebit/googletest/lib/googletest/include/gtest/internal/gtest-string.h
+        battlebit/googletest/lib/googletest/include/gtest/internal/gtest-type-util.h
+        battlebit/googletest/lib/googletest/include/gtest/gtest-death-test.h
+        battlebit/googletest/lib/googletest/include/gtest/gtest-matchers.h
+        battlebit/googletest/lib/googletest/include/gtest/gtest-message.h
+        battlebit/googletest/lib/googletest/include/gtest/gtest-param-test.h
+        battlebit/googletest/lib/googletest/include/gtest/gtest-printers.h
+        battlebit/googletest/lib/googletest/include/gtest/gtest-spi.h
+        battlebit/googletest/lib/googletest/include/gtest/gtest-test-part.h
+        battlebit/googletest/lib/googletest/include/gtest/gtest-typed-test.h
+        battlebit/googletest/lib/googletest/include/gtest/gtest.h
+        battlebit/googletest/lib/googletest/include/gtest/gtest_pred_impl.h
+        battlebit/googletest/lib/googletest/include/gtest/gtest_prod.h
+        battlebit/googletest/lib/googletest/samples/prime_tables.h
+        battlebit/googletest/lib/googletest/samples/sample1.cc
+        battlebit/googletest/lib/googletest/samples/sample1.h
+        battlebit/googletest/lib/googletest/samples/sample10_unittest.cc
+        battlebit/googletest/lib/googletest/samples/sample1_unittest.cc
+        battlebit/googletest/lib/googletest/samples/sample2.cc
+        battlebit/googletest/lib/googletest/samples/sample2.h
+        battlebit/googletest/lib/googletest/samples/sample2_unittest.cc
+        battlebit/googletest/lib/googletest/samples/sample3-inl.h
+        battlebit/googletest/lib/googletest/samples/sample3_unittest.cc
+        battlebit/googletest/lib/googletest/samples/sample4.cc
+        battlebit/googletest/lib/googletest/samples/sample4.h
+        battlebit/googletest/lib/googletest/samples/sample4_unittest.cc
+        battlebit/googletest/lib/googletest/samples/sample5_unittest.cc
+        battlebit/googletest/lib/googletest/samples/sample6_unittest.cc
+        battlebit/googletest/lib/googletest/samples/sample7_unittest.cc
+        battlebit/googletest/lib/googletest/samples/sample8_unittest.cc
+        battlebit/googletest/lib/googletest/samples/sample9_unittest.cc
+        battlebit/googletest/lib/googletest/src/gtest-all.cc
+        battlebit/googletest/lib/googletest/src/gtest-death-test.cc
+        battlebit/googletest/lib/googletest/src/gtest-filepath.cc
+        battlebit/googletest/lib/googletest/src/gtest-internal-inl.h
+        battlebit/googletest/lib/googletest/src/gtest-matchers.cc
+        battlebit/googletest/lib/googletest/src/gtest-port.cc
+        battlebit/googletest/lib/googletest/src/gtest-printers.cc
+        battlebit/googletest/lib/googletest/src/gtest-test-part.cc
+        battlebit/googletest/lib/googletest/src/gtest-typed-test.cc
+        battlebit/googletest/lib/googletest/src/gtest.cc
+        battlebit/googletest/lib/googletest/src/gtest_main.cc
+        battlebit/googletest/lib/googletest/test/googletest-break-on-failure-unittest_.cc
+        battlebit/googletest/lib/googletest/test/googletest-catch-exceptions-test_.cc
+        battlebit/googletest/lib/googletest/test/googletest-color-test_.cc
+        battlebit/googletest/lib/googletest/test/googletest-death-test-test.cc
+        battlebit/googletest/lib/googletest/test/googletest-death-test_ex_test.cc
+        battlebit/googletest/lib/googletest/test/googletest-env-var-test_.cc
+        battlebit/googletest/lib/googletest/test/googletest-failfast-unittest_.cc
+        battlebit/googletest/lib/googletest/test/googletest-filepath-test.cc
+        battlebit/googletest/lib/googletest/test/googletest-filter-unittest_.cc
+        battlebit/googletest/lib/googletest/test/googletest-list-tests-unittest_.cc
+        battlebit/googletest/lib/googletest/test/googletest-listener-test.cc
+        battlebit/googletest/lib/googletest/test/googletest-message-test.cc
+        battlebit/googletest/lib/googletest/test/googletest-options-test.cc
+        battlebit/googletest/lib/googletest/test/googletest-output-test_.cc
+        battlebit/googletest/lib/googletest/test/googletest-param-test-invalid-name1-test_.cc
+        battlebit/googletest/lib/googletest/test/googletest-param-test-invalid-name2-test_.cc
+        battlebit/googletest/lib/googletest/test/googletest-param-test-test.cc
+        battlebit/googletest/lib/googletest/test/googletest-param-test-test.h
+        battlebit/googletest/lib/googletest/test/googletest-param-test2-test.cc
+        battlebit/googletest/lib/googletest/test/googletest-port-test.cc
+        battlebit/googletest/lib/googletest/test/googletest-printers-test.cc
+        battlebit/googletest/lib/googletest/test/googletest-setuptestsuite-test_.cc
+        battlebit/googletest/lib/googletest/test/googletest-shuffle-test_.cc
+        battlebit/googletest/lib/googletest/test/googletest-test-part-test.cc
+        battlebit/googletest/lib/googletest/test/googletest-throw-on-failure-test_.cc
+        battlebit/googletest/lib/googletest/test/googletest-uninitialized-test_.cc
+        battlebit/googletest/lib/googletest/test/gtest-typed-test2_test.cc
+        battlebit/googletest/lib/googletest/test/gtest-typed-test_test.cc
+        battlebit/googletest/lib/googletest/test/gtest-typed-test_test.h
+        battlebit/googletest/lib/googletest/test/gtest-unittest-api_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_all_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_assert_by_exception_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_environment_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_help_test_.cc
+        battlebit/googletest/lib/googletest/test/gtest_list_output_unittest_.cc
+        battlebit/googletest/lib/googletest/test/gtest_main_unittest.cc
+        battlebit/googletest/lib/googletest/test/gtest_no_test_unittest.cc
+        battlebit/googletest/lib/googletest/test/gtest_pred_impl_unittest.cc
+        battlebit/googletest/lib/googletest/test/gtest_premature_exit_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_prod_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_repeat_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_skip_in_environment_setup_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_skip_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_sole_header_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_stress_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_test_macro_stack_footprint_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_testbridge_test_.cc
+        battlebit/googletest/lib/googletest/test/gtest_throw_on_failure_ex_test.cc
+        battlebit/googletest/lib/googletest/test/gtest_unittest.cc
+        battlebit/googletest/lib/googletest/test/gtest_xml_outfile1_test_.cc
+        battlebit/googletest/lib/googletest/test/gtest_xml_outfile2_test_.cc
+        battlebit/googletest/lib/googletest/test/gtest_xml_output_unittest_.cc
+        battlebit/googletest/lib/googletest/test/production.cc
+        battlebit/googletest/lib/googletest/test/production.h
+        battlebit/googletest/char_buff.cpp
+        battlebit/src/char_buff.c
+        battlebit/src/char_buff.h
+        battlebit/src/game.c
+        battlebit/src/game.h
+        battlebit/src/main.c
+        battlebit/src/repl.c
+        battlebit/src/repl.h
+        battlebit/src/server.c
+        battlebit/src/server.h)

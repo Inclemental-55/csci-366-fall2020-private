@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/homework_2.dir/homework_2.cpp.o  -o homework_2  ../lib/libgtest.a ../lib/libgtest_main.a ../libbattleBit_lib.a ../lib/libgtest.a -lpthread 

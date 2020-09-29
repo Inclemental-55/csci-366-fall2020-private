@@ -1,0 +1,3 @@
+/home/timothyb/Documents/csci-366-fall2020-private/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/timothyb/Documents/csci-366-fall2020-private/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/timothyb/Documents/csci-366-fall2020-private/cmake-build-debug/CMakeFiles/csci_366_fall2020_private.dir

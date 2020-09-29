@@ -3,7 +3,12 @@
 char * print_binary_representation(unsigned int i, char *buffer){
     buffer[0] = '0';
     buffer[1] = 'b';
-    // fill out remaining 32 bits, 1 or 0 depending on the value in the number i
+    int counter = 2;
+    unsigned defaultUnsigned;
+    for(defaultUnsigned = 1U << 31; defaultUnsigned > 0; defaultUnsigned /= 2) {
+        (i & defaultUnsigned) ? buffer[counter] = '1' : buffer[counter] = '0'; //this is a pretty quick trick using the bitwise AND operator combined with a ternary operator.
+        counter++;
+    }
     return buffer;
 }
 
@@ -37,14 +42,15 @@ struct Person {
     int age;
 };
 
-void set_my_age(struct Person p) {
-    p.age = 44;
+void set_my_age(struct Person *p) {
+    p->age = 44;
 }
 
 int get_my_age() {
     struct Person me;
     me.name = "Carson";
-    set_my_age(me);
+    //AAAAAH YEEEESSSS. We had a little pointer issue here... it is fixed.
+    set_my_age(&me);
     return me.age;
 }
 
