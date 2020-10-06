@@ -219,5 +219,4 @@ int add_ship_vertical(player_info *player, int x, int y, int length) {
         } else
             return -1;
     }
-
 }
