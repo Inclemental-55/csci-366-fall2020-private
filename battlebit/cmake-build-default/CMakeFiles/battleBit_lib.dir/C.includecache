@@ -15,6 +15,10 @@ game.h
 /home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/game.h
 limits.h
 -
+memory.h
+-
+ctype.h
+-
 
 /home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/game.h
 stdbool.h
