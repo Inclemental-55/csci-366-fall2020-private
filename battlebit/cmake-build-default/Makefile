@@ -229,6 +229,19 @@ homework_2/fast:
 .PHONY : homework_2/fast
 
 #=============================================================================
+# Target rules for targets named homework_3
+
+# Build rule for target.
+homework_3: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 homework_3
+.PHONY : homework_3
+
+# fast build rule for target.
+homework_3/fast:
+	$(MAKE) $(MAKESILENT) -f googletest/CMakeFiles/homework_3.dir/build.make googletest/CMakeFiles/homework_3.dir/build
+.PHONY : homework_3/fast
+
+#=============================================================================
 # Target rules for targets named gmock_main
 
 # Build rule for target.
@@ -287,6 +300,7 @@ src/assembly_demo.o: src/assembly_demo.asm.o
 # target to build an object file
 src/assembly_demo.asm.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/battleBit.dir/build.make CMakeFiles/battleBit.dir/src/assembly_demo.asm.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/battleBit_lib.dir/build.make CMakeFiles/battleBit_lib.dir/src/assembly_demo.asm.o
 .PHONY : src/assembly_demo.asm.o
 
 src/char_buff.o: src/char_buff.c.o
@@ -459,6 +473,7 @@ help:
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... homework_2"
+	@echo "... homework_3"
 	@echo "... src/assembly_demo.o"
 	@echo "... src/char_buff.o"
 	@echo "... src/char_buff.i"

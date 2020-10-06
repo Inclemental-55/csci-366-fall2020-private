@@ -241,6 +241,50 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="homework_3">
+				<Option output="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/homework_3" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/../src"/>
+					<Add directory="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/lib/googletest/include"/>
+					<Add directory="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/lib/googletest"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/Makefile&quot;  VERBOSE=1 homework_3"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="homework_3/fast">
+				<Option output="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/homework_3" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/../src"/>
+					<Add directory="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/lib/googletest/include"/>
+					<Add directory="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/lib/googletest"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/Makefile&quot;  VERBOSE=1 homework_3/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="gmock_main">
 				<Option output="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/lib/libgmock_main.a" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/lib/googlemock"/>
@@ -427,6 +471,12 @@
 		<Unit filename="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/homework_2.cpp">
 			<Option target="homework_2"/>
 		</Unit>
+		<Unit filename="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/homework_3.asm">
+			<Option target="homework_3"/>
+		</Unit>
+		<Unit filename="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/homework_3.cpp">
+			<Option target="homework_3"/>
+		</Unit>
 		<Unit filename="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/lib/googlemock/src/gmock-all.cc">
 			<Option target="gmock"/>
 		</Unit>
@@ -439,8 +489,12 @@
 		<Unit filename="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/lib/googletest/src/gtest_main.cc">
 			<Option target="gtest_main"/>
 		</Unit>
+		<Unit filename="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/repl.cpp">
+			<Option target="battleBit_tests"/>
+		</Unit>
 		<Unit filename="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/assembly_demo.asm">
 			<Option target="battleBit"/>
+			<Option target="battleBit_lib"/>
 		</Unit>
 		<Unit filename="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/char_buff.c">
 			<Option target="battleBit"/>

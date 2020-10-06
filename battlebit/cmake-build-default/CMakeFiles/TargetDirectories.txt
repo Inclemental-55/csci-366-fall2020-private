@@ -8,11 +8,12 @@
 /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/CMakeFiles/rebuild_cache.dir
 /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/CMakeFiles/install.dir
 /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/CMakeFiles/list_install_components.dir
-/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/CMakeFiles/battleBit_tests.dir
 /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/CMakeFiles/rebuild_cache.dir
+/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/CMakeFiles/battleBit_tests.dir
 /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/CMakeFiles/install/strip.dir
 /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/CMakeFiles/install/local.dir
 /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/CMakeFiles/homework_2.dir
+/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/CMakeFiles/homework_3.dir
 /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/CMakeFiles/edit_cache.dir
 /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/lib/CMakeFiles/install/strip.dir
 /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/googletest/lib/CMakeFiles/install/local.dir

@@ -206,6 +206,21 @@ homework_2/fast:
 	cd /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default && $(MAKE) $(MAKESILENT) -f googletest/CMakeFiles/homework_2.dir/build.make googletest/CMakeFiles/homework_2.dir/build
 .PHONY : homework_2/fast
 
+# Convenience name for target.
+googletest/CMakeFiles/homework_3.dir/rule:
+	cd /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 googletest/CMakeFiles/homework_3.dir/rule
+.PHONY : googletest/CMakeFiles/homework_3.dir/rule
+
+# Convenience name for target.
+homework_3: googletest/CMakeFiles/homework_3.dir/rule
+
+.PHONY : homework_3
+
+# fast build rule for target.
+homework_3/fast:
+	cd /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default && $(MAKE) $(MAKESILENT) -f googletest/CMakeFiles/homework_3.dir/build.make googletest/CMakeFiles/homework_3.dir/build
+.PHONY : homework_3/fast
+
 char_buff.o: char_buff.cpp.o
 
 .PHONY : char_buff.o
@@ -287,6 +302,69 @@ homework_2.cpp.s:
 	cd /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default && $(MAKE) $(MAKESILENT) -f googletest/CMakeFiles/homework_2.dir/build.make googletest/CMakeFiles/homework_2.dir/homework_2.cpp.s
 .PHONY : homework_2.cpp.s
 
+homework_3.o: homework_3.asm.o
+
+.PHONY : homework_3.o
+
+# target to build an object file
+homework_3.asm.o:
+	cd /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default && $(MAKE) $(MAKESILENT) -f googletest/CMakeFiles/homework_3.dir/build.make googletest/CMakeFiles/homework_3.dir/homework_3.asm.o
+.PHONY : homework_3.asm.o
+
+homework_3.o: homework_3.cpp.o
+
+.PHONY : homework_3.o
+
+# target to build an object file
+homework_3.cpp.o:
+	cd /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default && $(MAKE) $(MAKESILENT) -f googletest/CMakeFiles/homework_3.dir/build.make googletest/CMakeFiles/homework_3.dir/homework_3.cpp.o
+.PHONY : homework_3.cpp.o
+
+homework_3.i: homework_3.cpp.i
+
+.PHONY : homework_3.i
+
+# target to preprocess a source file
+homework_3.cpp.i:
+	cd /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default && $(MAKE) $(MAKESILENT) -f googletest/CMakeFiles/homework_3.dir/build.make googletest/CMakeFiles/homework_3.dir/homework_3.cpp.i
+.PHONY : homework_3.cpp.i
+
+homework_3.s: homework_3.cpp.s
+
+.PHONY : homework_3.s
+
+# target to generate assembly for a file
+homework_3.cpp.s:
+	cd /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default && $(MAKE) $(MAKESILENT) -f googletest/CMakeFiles/homework_3.dir/build.make googletest/CMakeFiles/homework_3.dir/homework_3.cpp.s
+.PHONY : homework_3.cpp.s
+
+repl.o: repl.cpp.o
+
+.PHONY : repl.o
+
+# target to build an object file
+repl.cpp.o:
+	cd /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default && $(MAKE) $(MAKESILENT) -f googletest/CMakeFiles/battleBit_tests.dir/build.make googletest/CMakeFiles/battleBit_tests.dir/repl.cpp.o
+.PHONY : repl.cpp.o
+
+repl.i: repl.cpp.i
+
+.PHONY : repl.i
+
+# target to preprocess a source file
+repl.cpp.i:
+	cd /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default && $(MAKE) $(MAKESILENT) -f googletest/CMakeFiles/battleBit_tests.dir/build.make googletest/CMakeFiles/battleBit_tests.dir/repl.cpp.i
+.PHONY : repl.cpp.i
+
+repl.s: repl.cpp.s
+
+.PHONY : repl.s
+
+# target to generate assembly for a file
+repl.cpp.s:
+	cd /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default && $(MAKE) $(MAKESILENT) -f googletest/CMakeFiles/battleBit_tests.dir/build.make googletest/CMakeFiles/battleBit_tests.dir/repl.cpp.s
+.PHONY : repl.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -301,6 +379,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... battleBit_tests"
 	@echo "... homework_2"
+	@echo "... homework_3"
 	@echo "... char_buff.o"
 	@echo "... char_buff.i"
 	@echo "... char_buff.s"
@@ -310,6 +389,13 @@ help:
 	@echo "... homework_2.o"
 	@echo "... homework_2.i"
 	@echo "... homework_2.s"
+	@echo "... homework_3.o"
+	@echo "... homework_3.o"
+	@echo "... homework_3.i"
+	@echo "... homework_3.s"
+	@echo "... repl.o"
+	@echo "... repl.i"
+	@echo "... repl.s"
 .PHONY : help
 
 

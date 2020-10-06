@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/battleBit_lib.dir/src/assembly_demo.asm.o"
   "CMakeFiles/battleBit_lib.dir/src/char_buff.c.o"
   "CMakeFiles/battleBit_lib.dir/src/game.c.o"
   "CMakeFiles/battleBit_lib.dir/src/main.c.o"
@@ -9,6 +10,6 @@ file(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang C)
+foreach(lang ASM_NASM C)
   include(CMakeFiles/battleBit_lib.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()
