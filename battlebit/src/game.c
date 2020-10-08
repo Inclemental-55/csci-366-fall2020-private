@@ -61,6 +61,26 @@ int game_fire(game *game, int player, int x, int y) {
     //
     //  If the opponents ships value is 0, they have no remaining ships, and you should set the game state to
     //  PLAYER_1_WINS or PLAYER_2_WINS depending on who won.
+    unsigned long long int fireBitMask = xy_to_bitval(x, y);
+    if (fireBitMask != 0 && game != NULL) {
+        int opponentPlayer = (player == 0) ? 1 : 0;
+        //update the player's 'shots' value
+        game->players[player].shots ^= fireBitMask;
+        //check if its a hit.
+        unsigned long long int opponentsShips = game->players[opponentPlayer].ships;
+        if ((opponentsShips ^ fireBitMask) < opponentsShips) { //hit
+            game->players[player].hits ^= fireBitMask;
+            game->players[opponentPlayer].ships ^= fireBitMask;
+            if (opponentsShips == 0ull && player == 0)
+                game->status = PLAYER_1_WINS;
+            else if (opponentsShips == 0ull && player == 1)
+                game->status = PLAYER_2_WINS;
+            return 1; //caboom
+        } else //miss!
+            return 0;
+    } else  //invalid
+        return 0;
+
 }
 
 
@@ -96,16 +116,15 @@ int game_load_board(struct game *game, int player, char *spec) {
     // if it is invalid, you should return -1
     if (spec != NULL && strlen(spec) == 15) { //check for nullity and correct length
         unsigned long long int originalBoard = game->players[player].ships; //our original board
-        char ships[] = {'c', 'b', 'd', 's', 'p'}; //acceptable ships
+        char ships[] ={'c', 'b', 'd', 's', 'p'}; //acceptable ships
         int lengths[] = {5, 4, 3, 3, 2}; //acceptable lengths
         char usedShips[5] = {};
         for (int i = 0; i < 15; i += 3) {
             int length;
             for (int z = 0; z < sizeof(ships); z++) { //check if it is a valid ship, and get the length of the ship
-                if (sizeof(usedShips) >= z) { //check for duplicate ships
-                    if (tolower(spec[i]) == tolower(usedShips[z]))
-                        return -1;
-                }
+                if (sizeof(usedShips) >= z &&
+                    tolower(spec[i]) == tolower(usedShips[z]))  //check for duplicate ships
+                    return -1;
                 if (tolower(spec[i]) == ships[z]) { //find the ship and get its length
                     length = lengths[z];
                     break;
@@ -114,9 +133,9 @@ int game_load_board(struct game *game, int player, char *spec) {
             }
             strncat(usedShips, &spec[i], 1); //add the new ship to used ships
             int result; //storage for our result
-            result = (spec[i] >= 'A' && spec[i] <= 'Z')
-                     ? //if its cap, we do horizontal. Yes i love ternary operators...
-                     add_ship_horizontal(&game->players[player], ((int) spec[i + 1] - '0'), ((int) spec[i + 2] - '0'),
+            result = (spec[i] >= 'A' && spec[i] <= 'Z') ? //if its cap, we do horizontal.
+                     add_ship_horizontal(&game->players[player], ((int) spec[i + 1] - '0'),
+                                         ((int) spec[i + 2] - '0'),
                                          length) :
                      add_ship_vertical(&game->players[player], ((int) spec[i + 1] - '0'), ((int) spec[i + 2] - '0'),
                                        length);
@@ -130,6 +149,14 @@ int game_load_board(struct game *game, int player, char *spec) {
         return -1;
 }
 
+/**
+ * Adds a ship horizontally to the gameboard. Implemented recursively.
+ * @param player Player struct
+ * @param x X loc of the ship
+ * @param y Y loc of the ship
+ * @param length Current length of the ship left to implement
+ * @return 1 if successful, -1 otherwise
+ */
 int add_ship_horizontal(player_info *player, int x, int y, int length) {
     // implement this as part of Step 2
     // returns 1 if the ship can be added, -1 if not
@@ -141,7 +168,7 @@ int add_ship_horizontal(player_info *player, int x, int y, int length) {
             unsigned long long int ships = player->ships, mask = xy_to_bitval(x, y); //get the mask and what not
             if ((ships ^ xy_to_bitval(x, y)) >
                 ships) {  //check for overlapping ships. If our new val is greater then we obviously added a 1 successfully...
-                player->ships = player->ships ^ mask;
+                player->ships ^= mask;
                 return add_ship_horizontal(player, ++x, y, --length);
             } else
                 //overlapping ships
@@ -152,6 +179,14 @@ int add_ship_horizontal(player_info *player, int x, int y, int length) {
 
 }
 
+/**
+ * Adds a ship vertically, implemented using recursion.
+ * @param player Player struct
+ * @param x X loc of the ship
+ * @param y Y loc of the ship
+ * @param length The current length left to add of the ship
+ * @return 1 if successful, -1 if not successful
+ */
 int add_ship_vertical(player_info *player, int x, int y, int length) {
     // implement this as part of Step 2
     // returns 1 if the ship can be added, -1 if not
@@ -163,7 +198,7 @@ int add_ship_vertical(player_info *player, int x, int y, int length) {
             unsigned long long int ships = player->ships, mask = xy_to_bitval(x, y);
             if ((ships ^ xy_to_bitval(x, y)) >
                 ships) { //check for overlapping ships, if the number is greater, we obviously successfully added a 1
-                player->ships = player->ships ^ mask;
+                player->ships ^= mask;
                 return add_ship_vertical(player, x, ++y, --length);
             } else
                 //overlapping ships

@@ -49,6 +49,8 @@ TEST(game_fire,empty_game){
 TEST(game_fire,hit_fire){
     game_init();
     struct game * gameon = game_get_current();
+    char * spec = "C00b02D23S47p71";
+    game_load_board(gameon, 0, spec);
     //EXPECT_TRUE(strcmp("Baz", "Baz") == 0);
     ASSERT_EQ(game_fire(gameon,1,0,0),1);
 }

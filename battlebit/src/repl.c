@@ -8,17 +8,18 @@
 #include "repl.h"
 #include "server.h"
 #include "char_buff.h"
+#include "limits.h"
 
 extern void nasm_hello_world();
 
-struct char_buff * repl_read_command(char * prompt) {
+struct char_buff *repl_read_command(char *prompt) {
     printf("%s", prompt);
     char *line = NULL;
     size_t buffer_size = 0; // let getline autosize it
     if (getline(&line, &buffer_size, stdin) == -1) {
         if (feof(stdin)) {
             exit(EXIT_SUCCESS);  // We received an EOF
-        } else  {
+        } else {
             perror("readline");
             exit(EXIT_FAILURE);
         }
@@ -34,16 +35,16 @@ struct char_buff * repl_read_command(char * prompt) {
     }
 }
 
-void repl_execute_command(struct char_buff * buffer) {
-    char* command = cb_tokenize(buffer, " \n");
+void repl_execute_command(struct char_buff *buffer) {
+    char *command = cb_tokenize(buffer, " \n");
     if (command) {
-        char* arg1 = cb_next_token(buffer);
-        char* arg2 = cb_next_token(buffer);
-        char* arg3 = cb_next_token(buffer);
+        char *arg1 = cb_next_token(buffer);
+        char *arg2 = cb_next_token(buffer);
+        char *arg3 = cb_next_token(buffer);
         if (strcmp(command, "exit") == 0) {
             printf("goodbye!");
             exit(EXIT_SUCCESS);
-        } else if(strcmp(command, "?") == 0) {
+        } else if (strcmp(command, "?") == 0) {
             printf("? - show help\n");
             printf("load [0-1] <string> - load a ship layout file for the given player\n");
             printf("show [0-1] - shows the board for the given player\n");
@@ -52,13 +53,13 @@ void repl_execute_command(struct char_buff * buffer) {
             printf("reset - reset the game\n");
             printf("server - start the server\n");
             printf("exit - quit the server\n");
-        } else if(strcmp(command, "server") == 0) {
+        } else if (strcmp(command, "server") == 0) {
             server_start();
-        } else if(strcmp(command, "show") == 0) {
+        } else if (strcmp(command, "show") == 0) {
 
             // work with repl_print_board
 
-        } else if(strcmp(command, "reset") == 0) {
+        } else if (strcmp(command, "reset") == 0) {
 
             game_init();
 
@@ -78,7 +79,7 @@ void repl_execute_command(struct char_buff * buffer) {
     }
 }
 
-void repl_print_board(game *game, int player, char_buff * buffer) {
+void repl_print_board(game *game, int player, char_buff *buffer) {
     player_info player_info = game->players[player];
     cb_append(buffer, "battleBit.........\n");
     cb_append(buffer, "-----[ ENEMY ]----\n");
@@ -89,14 +90,57 @@ void repl_print_board(game *game, int player, char_buff * buffer) {
     cb_append(buffer, ".........battleBit\n\n");
 }
 
+void printmybits(unsigned long n) {
+    unsigned long i;
+    i = 1UL << (sizeof(n) * CHAR_BIT - 1);
+    int counter = 0;
+    while (i > 0) {
+        if (n & i)
+            printf("1");
+        else
+            printf("0");
+        i >>= 1;
+        counter++;
+        if (counter == 8) {
+            printf(".");
+            counter = 0;
+        }
+    }
+    printf("\n");
+}
+
 void repl_print_ships(player_info *player_info, char_buff *buffer) {
     // Step 4 - Implement this to print out the visual ships representation
     //  for the console.  You will need to use bit masking for each position
     //  to determine if a ship is at the position or not.  If it is present
     //  you need to print an X.  If not, you need to print a space character ' '
+    char *top = "  0 1 2 3 4 5 6 7 \n";
+    strncat(buffer->buffer, top, strlen(top));
+    unsigned long long int shipMask;
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            if (x == 0) {
+                char *myi = malloc(sizeof(char));
+                sprintf(myi, "%d", y); //whoever designed the strings in C is an idiot
+                strncat(buffer->buffer, myi, 1);
+            }
+            shipMask = xy_to_bitval(x, y);
+            if ((player_info->ships ^ shipMask) < player_info->ships) { //there be a ship here
+                strncat(buffer->buffer, " *", 2);
+                if (x == 7) {
+                    strncat(buffer->buffer, " \n", 2);
+                    continue;
+                }
+            } else {
+                strncat(buffer->buffer, "  ", 2);
+            }
+            if (x == 7) {
+                strncat(buffer->buffer, " \n", 2);
+            }
+        }
+    }
 
 
-    
 }
 
 void repl_print_hits(struct player_info *player_info, struct char_buff *buffer) {
@@ -106,4 +150,38 @@ void repl_print_hits(struct player_info *player_info, struct char_buff *buffer) 
     // hits and shots values in the players game struct.  If a shot was fired at
     // a given spot and it was a hit, print 'H', if it was a miss, print 'M'.  If
     // no shot was taken at a position, print a space character ' '
+    char *top = "  0 1 2 3 4 5 6 7 \n";
+    strncat(buffer->buffer, top, strlen(top));
+    unsigned long long int shipMask;
+    for (int y = 0; y < 8; y++) {
+        for (int x = 0; x < 8; x++) {
+            if (x == 0) {
+                char *myi = malloc(sizeof(char));
+                sprintf(myi, "%d", y); //whoever designed the strings in C is an idiot
+                strncat(buffer->buffer, myi, 1);
+            }
+            shipMask = xy_to_bitval(x, y);
+            if ((player_info->hits ^ shipMask) < player_info->hits) { //there be a ship here
+                strncat(buffer->buffer, " H", 2);
+                if (x == 7) {
+                    strncat(buffer->buffer, " \n", 2);
+                    continue;
+                }
+            }
+            else if((player_info->shots ^ shipMask) < player_info->shots){
+                strncat(buffer->buffer, " M", 2);
+                if(x == 7){
+                    strncat(buffer->buffer, " \n",2);
+                    continue;
+                }
+            }
+            else {
+                strncat(buffer->buffer, "  ", 2);
+            }
+            if (x == 7) {
+                strncat(buffer->buffer, " \n", 2);
+            }
+        }
+    }
+
 }
