@@ -2,6 +2,7 @@
 ;; in RISC assembly
 ;; Paste the code below, along with the output
 
+
 MOV   R0, #1
 LOOP: CMP R0, #10
       BEQ EXIT
