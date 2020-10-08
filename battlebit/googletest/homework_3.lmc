@@ -16,14 +16,13 @@
 ;; DAT data
 ;;
 
-
-toploop LDA val
+loop LDA val
         OUT
         ADD one
         STA val
         SUB top
         BRZ end
-        BRA toploop
+        BRA loop
 end     LDA top
         OUT
         HLT
@@ -32,7 +31,6 @@ one     DAT 1
 top     DAT 10
 
 Output:
-0
 1
 2
 3
