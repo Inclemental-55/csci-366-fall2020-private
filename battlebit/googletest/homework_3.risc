@@ -1,3 +1,55 @@
 ;; TODO - implement counting up from 1 to 10
 ;; in RISC assembly
 ;; Paste the code below, along with the output
+
+MOV   R0, #1
+LOOP: CMP R0, #10
+      BEQ EXIT
+      OUT R0, 4
+      ADD R0, R0, #1
+      B LOOP
+EXIT: OUT R0,4
+      HALT
+
+;;Output:
+;;1
+;;2
+;;3
+;;4
+;;5
+;;6
+;;7
+;;8
+;;9
+;;10
+
+;; NOTES
+;; LDR - Load to register
+;; STR - store from register
+;; ADD,SUB - math
+;; MOV - copy from register to register
+;; CMP - compare a register with a number
+;; B, B<condition> - branch conditionally
+;; AND - bitwise AND
+;; ORR - bitwise OR
+;; EOR - bitwise XOR
+;; MVN - bitwise NOT
+;; LSL - left shift
+;; LSR - right shift
+;; HALT - stop execution
+;; DAT - data
+;; BEQ - branch if equal
+;; BNE - branch if not equal
+;; BGT - branch if greater than
+;; BLT - branch if less than
+
+
+
+
+
+
+
+
+
+
+
