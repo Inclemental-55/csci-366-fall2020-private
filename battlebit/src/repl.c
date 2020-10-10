@@ -114,33 +114,29 @@ void repl_print_ships(player_info *player_info, char_buff *buffer) {
     //  for the console.  You will need to use bit masking for each position
     //  to determine if a ship is at the position or not.  If it is present
     //  you need to print an X.  If not, you need to print a space character ' '
-    char *top = "  0 1 2 3 4 5 6 7 \n";
-    strncat(buffer->buffer, top, strlen(top));
-    unsigned long long int shipMask;
-    for (int y = 0; y < 8; y++) {
-        for (int x = 0; x < 8; x++) {
-            if (x == 0) {
-                char *myi = malloc(sizeof(char));
-                sprintf(myi, "%d", y); //whoever designed the strings in C is an idiot
-                strncat(buffer->buffer, myi, 1);
-            }
-            shipMask = xy_to_bitval(x, y);
-            if ((player_info->ships ^ shipMask) < player_info->ships) { //there be a ship here
-                strncat(buffer->buffer, " *", 2);
-                if (x == 7) {
-                    strncat(buffer->buffer, " \n", 2);
-                    continue;
+    if (player_info != NULL && buffer != NULL) {
+        cb_append(buffer, "  0 1 2 3 4 5 6 7 \n");
+        for (int y = 0; y < 8; y++) {
+            for (int x = 0; x < 8; x++) {
+                if (x == 0) {
+                    char *myi = malloc(sizeof(char));
+                    sprintf(myi, "%d", y);
+                    strncat(buffer->buffer, myi, 1);
+                    free(myi);
                 }
-            } else {
-                strncat(buffer->buffer, "  ", 2);
-            }
-            if (x == 7) {
-                strncat(buffer->buffer, " \n", 2);
+                if ((player_info->ships ^ xy_to_bitval(x, y)) < player_info->ships) { //there be a ship here
+                    strncat(buffer->buffer, " *", 2);
+                    if (x == 7) {
+                        strncat(buffer->buffer, " \n", 2);
+                        continue;
+                    }
+                } else
+                    strncat(buffer->buffer, "  ", 2);
+                if (x == 7)
+                    strncat(buffer->buffer, " \n", 2);
             }
         }
     }
-
-
 }
 
 void repl_print_hits(struct player_info *player_info, struct char_buff *buffer) {
@@ -150,38 +146,34 @@ void repl_print_hits(struct player_info *player_info, struct char_buff *buffer) 
     // hits and shots values in the players game struct.  If a shot was fired at
     // a given spot and it was a hit, print 'H', if it was a miss, print 'M'.  If
     // no shot was taken at a position, print a space character ' '
-    char *top = "  0 1 2 3 4 5 6 7 \n";
-    strncat(buffer->buffer, top, strlen(top));
-    unsigned long long int shipMask;
-    for (int y = 0; y < 8; y++) {
-        for (int x = 0; x < 8; x++) {
-            if (x == 0) {
-                char *myi = malloc(sizeof(char));
-                sprintf(myi, "%d", y); //whoever designed the strings in C is an idiot
-                strncat(buffer->buffer, myi, 1);
-            }
-            shipMask = xy_to_bitval(x, y);
-            if ((player_info->hits ^ shipMask) < player_info->hits) { //there be a ship here
-                strncat(buffer->buffer, " H", 2);
-                if (x == 7) {
+    if (player_info != NULL && buffer != NULL) {
+        cb_append(buffer, "  0 1 2 3 4 5 6 7 \n");
+        for (int y = 0; y < 8; y++) {
+            for (int x = 0; x < 8; x++) {
+                unsigned long long int hitMask = xy_to_bitval(x, y);
+                if (x == 0) {
+                    char *myi = malloc(sizeof(char));
+                    sprintf(myi, "%d", y);
+                    strncat(buffer->buffer, myi, 1);
+                    free(myi);
+                }
+                if ((player_info->hits ^ hitMask) < player_info->hits) { //there be a ship here aarrr
+                    strncat(buffer->buffer, " H", 2);
+                    if (x == 7) {
+                        strncat(buffer->buffer, " \n", 2);
+                        continue;
+                    }
+                } else if ((player_info->shots ^ hitMask) < player_info->shots) {
+                    strncat(buffer->buffer, " M", 2);
+                    if (x == 7) {
+                        strncat(buffer->buffer, " \n", 2);
+                        continue;
+                    }
+                } else
+                    strncat(buffer->buffer, "  ", 2);
+                if (x == 7)
                     strncat(buffer->buffer, " \n", 2);
-                    continue;
-                }
-            }
-            else if((player_info->shots ^ shipMask) < player_info->shots){
-                strncat(buffer->buffer, " M", 2);
-                if(x == 7){
-                    strncat(buffer->buffer, " \n",2);
-                    continue;
-                }
-            }
-            else {
-                strncat(buffer->buffer, "  ", 2);
-            }
-            if (x == 7) {
-                strncat(buffer->buffer, " \n", 2);
             }
         }
     }
-
 }
