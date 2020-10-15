@@ -1,8 +1,6 @@
         global    find_max
         section   .text
 find_max:
-        ;; rdi has the array in it
-        ;; rsi has the length in it
         mov rax, [rdi]
 loop:
         cmp rax,[rdi]
@@ -12,6 +10,10 @@ loop:
         cmp rsi,0
         jg loop
         ret
+
+        ;; rdi has the array in it
+        ;; rsi has the length in it
+        ;; rax has the output in it
 
         ;;MOV - move
         ;;AND/OR/XOR/NOT - bitwise operations
