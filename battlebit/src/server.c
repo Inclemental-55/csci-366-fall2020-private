@@ -54,11 +54,15 @@ int run_server() {
     //
     // You will then create a thread running handle_client_connect, passing the player number out
     // so they can interact with the server asynchronously
+    
 }
 
 int server_start() {
     // STEP 7 - using a pthread, run the run_server() function asynchronously, so you can still
     // interact with the game via the command line REPL
     init_server();
-    pthread_create(&SERVER->server_thread, NULL, (void *(*)(void *)) run_server, NULL);
+    if (SERVER->server_thread == 0)
+        pthread_create(&SERVER->server_thread, NULL, (void *(*)(void *)) run_server, NULL);
+    else
+        printf("Server Already Running!");
 }

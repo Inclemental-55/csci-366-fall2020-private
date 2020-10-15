@@ -63,10 +63,8 @@ int game_fire(game *game, int player, int x, int y) {
     //  PLAYER_1_WINS or PLAYER_2_WINS depending on who won.
     unsigned long long int fireBitMask = xy_to_bitval(x, y);
     if (fireBitMask != 0 && game != NULL) {
-        int opponentPlayer = (player == 0) ? 1 : 0;
-        //update the player's 'shots' value
-        game->players[player].shots ^= fireBitMask;
-        //check if its a hit.
+        int opponentPlayer = (player == 0) ? 1 : 0; //update the player's 'shots' value
+        game->players[player].shots ^= fireBitMask; //check if its a hit.
         unsigned long long int opponentsShips = game->players[opponentPlayer].ships;
         if ((opponentsShips ^ fireBitMask) < opponentsShips) { //hit
             game->players[player].hits ^= fireBitMask;
@@ -161,16 +159,11 @@ int add_ship_horizontal(player_info *player, int x, int y, int length) {
     // hint: this can be defined recursively
     if (length == 0)
         return 1;
-    if (x > -1 && y > -1 && x < 8 && y < 8) { //ensure it is within reasonable bounds
-        unsigned long long int mask = xy_to_bitval(x, y); //get the mask and what not
-        if ((player->ships ^ mask) > player->ships) {  //check for overlapping ships.
-            player->ships ^= mask;
-            return add_ship_horizontal(player, ++x, y, --length);
-        } else //overlapping ships
-            return -1;
-    } else
+    if ((player->ships ^ xy_to_bitval(x, y)) > player->ships) {  //check for overlapping ships.
+        player->ships ^= xy_to_bitval(x, y);
+        return add_ship_horizontal(player, ++x, y, --length);
+    } else //overlapping ships
         return -1;
-
 
 }
 
@@ -188,14 +181,9 @@ int add_ship_vertical(player_info *player, int x, int y, int length) {
     // hint: this can be defined recursively
     if (length == 0)
         return 1;
-    if (x > -1 && y > -1 && x < 8 && y < 8) {
-        unsigned long long int mask = xy_to_bitval(x, y);
-        if ((player->ships ^ xy_to_bitval(x, y)) > player->ships) { //check for overlapping ships
-            player->ships ^= mask;
-            return add_ship_vertical(player, x, ++y, --length);
-        } else //overlapping ships
-            return -1;
-    } else
+    if ((player->ships ^ xy_to_bitval(x, y)) > player->ships) { //check for overlapping ships
+        player->ships ^= xy_to_bitval(x, y);
+        return add_ship_vertical(player, x, ++y, --length);
+    } else //overlapping ships
         return -1;
-
 }
