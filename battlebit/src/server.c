@@ -43,9 +43,11 @@ int handle_client_connect(int player) {
 
 void server_broadcast(char_buff *msg) {
     // send message to all players
-    for(int i = 0; i < sizeof(SERVER->player_sockets); i++){
-        if(SERVER->player_sockets[i] != 0 && SERVER->player_threads[i] != 0){
-            send(SERVER->player_sockets[i],msg,strlen(msg),0);
+    if (SERVER != NULL && msg != NULL) {
+        for (int i = 0; i < sizeof(SERVER->player_sockets); i++) {
+            if (SERVER->player_sockets[i] != 0 && SERVER->player_threads[i] != 0) {
+                send(SERVER->player_sockets[i], msg, sizeof(&msg), 0);
+            }
         }
     }
 }
@@ -59,48 +61,47 @@ int run_server() {
     //
     // You will then create a thread running handle_client_connect, passing the player number out
     // so they can interact with the server asynchronously
-    int server_socket_fd = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
-    if(server_socket_fd == -1)
-        printf("Could not create socket\n");
-    else{
-        int yes = 1;
-        setsockopt(server_socket_fd,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(yes));
+    if (SERVER != NULL) {
+        int server_socket_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+        if (server_socket_fd == -1)
+            printf("Could not create socket\n");
+        else {
+            int yes = 1;
+            setsockopt(server_socket_fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes));
 
-        struct sockaddr_in server;
-        server.sin_family = AF_INET;
+            struct sockaddr_in server;
+            server.sin_family = AF_INET;
 
-        server.sin_addr.s_addr = INADDR_ANY;
-        server.sin_port = htons(9876);
+            server.sin_addr.s_addr = INADDR_ANY;
+            server.sin_port = htons(9876);
 
-        if(bind(server_socket_fd,(struct sockaddr *)&server, sizeof(server)) < 0){
-            puts("Bind failed");
-        }
-        else{
-            puts("Bind worked!");
-            listen(server_socket_fd,2);
+            if (bind(server_socket_fd, (struct sockaddr *) &server, sizeof(server)) < 0) {
+                puts("Bind failed");
+            } else {
+                puts("Bind worked!");
+                listen(server_socket_fd, 2);
 
-            puts("Waiting for incoming connections...");
+                puts("Waiting for incoming connections...");
 
-            struct sockaddr_in client;
-            socklen_t size_from_connect;
-            int client_socket_fd;
+                struct sockaddr_in client;
+                socklen_t size_from_connect;
+                int client_socket_fd;
 
-            while((client_socket_fd = accept(server_socket_fd,(struct  sockaddr *)&client,&size_from_connect)) > 0){
-                int playernum = (SERVER->player_sockets[0] == 0) ? 0 : 1;
-                if(SERVER->player_sockets[playernum] == 0 && SERVER->player_threads[playernum == 0]) {
-                    SERVER->player_sockets[playernum] = client_socket_fd;
-                    pthread_create(&SERVER->player_threads[playernum], NULL, handle_client_connect,playernum);
-                }
-                else{
-                    puts("Player already connected on this socket");
+                while ((client_socket_fd = accept(server_socket_fd,
+                                                  (struct sockaddr *) &client,
+                                                  &size_from_connect)) > 0) {
+
+                    int playerNum = (SERVER->player_sockets[0] == 0) ? 0 : 1;
+                    if (SERVER->player_sockets[playerNum] == 0 && SERVER->player_threads[playerNum == 0]) {
+                        SERVER->player_sockets[playerNum] = client_socket_fd;
+                        pthread_create(&SERVER->player_threads[playerNum], NULL, handle_client_connect, playerNum);
+                    } else {
+                        puts("Player already connected on this socket");
+                    }
                 }
             }
         }
     }
-
-
-
-    
 }
 
 int server_start() {
@@ -108,7 +109,7 @@ int server_start() {
     // interact with the game via the command line REPL
     init_server();
     if (SERVER->server_thread == 0)
-        pthread_create(&SERVER->server_thread, NULL, (void *(*)(void *)) run_server, NULL);
+        pthread_create(&SERVER->server_thread, NULL, run_server, NULL);
     else
-        printf("Server Already Running!");
+        printf("Server Thread Already Running!");
 }

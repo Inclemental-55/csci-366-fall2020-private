@@ -66,19 +66,19 @@ int game_fire(game *game, int player, int x, int y) {
         int opponentPlayer = (player == 0) ? 1 : 0; //update the player's 'shots' value
         game->players[player].shots ^= fireBitMask; //check if its a hit.
         unsigned long long int opponentsShips = game->players[opponentPlayer].ships;
+        game->status = (player == 0) ? PLAYER_1_TURN : PLAYER_0_TURN;
         if ((opponentsShips ^ fireBitMask) < opponentsShips) { //hit
             game->players[player].hits ^= fireBitMask;
             game->players[opponentPlayer].ships ^= fireBitMask;
-            if (opponentsShips == 0ull && player == 0)
-                game->status = PLAYER_0_WINS;
-            else if (opponentsShips == 0ull && player == 1)
+            if (game->players[0].ships == 0)
                 game->status = PLAYER_1_WINS;
+            else if (game->players[1].ships == 0)
+                game->status = PLAYER_0_WINS;
             return 1; //caboom
         } else //miss!
             return 0;
     } else  //invalid
         return 0;
-
 }
 
 
@@ -141,6 +141,7 @@ int game_load_board(struct game *game, int player, char *spec) {
                 return -1;
             }
         }
+        game->status = (player == 0) ? CREATED : PLAYER_0_TURN;
         return 1; //success! return 1
     } else
         return -1;
@@ -165,7 +166,6 @@ int add_ship_horizontal(player_info *player, int x, int y, int length) {
         return add_ship_horizontal(player, ++x, y, --length);
     } else //overlapping ships
         return -1;
-
 }
 
 /**
