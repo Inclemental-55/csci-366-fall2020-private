@@ -107,9 +107,12 @@ int run_server() {
 int server_start() {
     // STEP 7 - using a pthread, run the run_server() function asynchronously, so you can still
     // interact with the game via the command line REPL
+<<<<<<< HEAD
     init_server();
     if (SERVER->server_thread == 0)
         pthread_create(&SERVER->server_thread, NULL, run_server, NULL);
     else
         printf("Server Thread Already Running!");
+=======
+>>>>>>> 9482ab881b27e91a56380a24a47d8087a82267d3
 }
