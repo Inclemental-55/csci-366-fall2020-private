@@ -1,5 +1,4 @@
 /snap/clion/129/bin/cmake/linux/bin/cmake -G "CodeBlocks - Unix Makefiles" /home/timothyb/Documents/csci-366-fall2020-private/battlebit
--- Found PythonInterp: /usr/bin/python3.8 (found version "3.8.5") 
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default

@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/battleBit.dir/src/assembly_demo.asm.o"
   "CMakeFiles/battleBit.dir/src/char_buff.c.o"
   "CMakeFiles/battleBit.dir/src/game.c.o"
+  "CMakeFiles/battleBit.dir/src/helper.c.o"
   "CMakeFiles/battleBit.dir/src/main.c.o"
   "CMakeFiles/battleBit.dir/src/repl.c.o"
   "CMakeFiles/battleBit.dir/src/server.c.o"

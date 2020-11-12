@@ -512,6 +512,14 @@
 			<Option target="battleBit"/>
 			<Option target="battleBit_lib"/>
 		</Unit>
+		<Unit filename="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/helper.c">
+			<Option target="battleBit"/>
+			<Option target="battleBit_lib"/>
+		</Unit>
+		<Unit filename="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/helper.h">
+			<Option target="battleBit"/>
+			<Option target="battleBit_lib"/>
+		</Unit>
 		<Unit filename="/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/main.c">
 			<Option target="battleBit"/>
 			<Option target="battleBit_lib"/>

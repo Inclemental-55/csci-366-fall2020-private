@@ -7,6 +7,8 @@ CMakeFiles/battleBit_lib.dir/src/char_buff.c.o: ../src/char_buff.h
 CMakeFiles/battleBit_lib.dir/src/game.c.o: ../src/game.c
 CMakeFiles/battleBit_lib.dir/src/game.c.o: ../src/game.h
 
+CMakeFiles/battleBit_lib.dir/src/helper.c.o: ../src/helper.c
+
 CMakeFiles/battleBit_lib.dir/src/main.c.o: ../src/char_buff.h
 CMakeFiles/battleBit_lib.dir/src/main.c.o: ../src/game.h
 CMakeFiles/battleBit_lib.dir/src/main.c.o: ../src/main.c

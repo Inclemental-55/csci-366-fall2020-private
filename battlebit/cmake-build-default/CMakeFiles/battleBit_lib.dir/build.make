@@ -142,9 +142,22 @@ CMakeFiles/battleBit_lib.dir/src/char_buff.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/battleBit_lib.dir/src/char_buff.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/char_buff.c -o CMakeFiles/battleBit_lib.dir/src/char_buff.c.s
 
+CMakeFiles/battleBit_lib.dir/src/helper.c.o: CMakeFiles/battleBit_lib.dir/flags.make
+CMakeFiles/battleBit_lib.dir/src/helper.c.o: ../src/helper.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/battleBit_lib.dir/src/helper.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/battleBit_lib.dir/src/helper.c.o   -c /home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/helper.c
+
+CMakeFiles/battleBit_lib.dir/src/helper.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/battleBit_lib.dir/src/helper.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/helper.c > CMakeFiles/battleBit_lib.dir/src/helper.c.i
+
+CMakeFiles/battleBit_lib.dir/src/helper.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/battleBit_lib.dir/src/helper.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/helper.c -o CMakeFiles/battleBit_lib.dir/src/helper.c.s
+
 CMakeFiles/battleBit_lib.dir/src/assembly_demo.asm.o: CMakeFiles/battleBit_lib.dir/flags.make
 CMakeFiles/battleBit_lib.dir/src/assembly_demo.asm.o: ../src/assembly_demo.asm
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building ASM_NASM object CMakeFiles/battleBit_lib.dir/src/assembly_demo.asm.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building ASM_NASM object CMakeFiles/battleBit_lib.dir/src/assembly_demo.asm.o"
 	/usr/bin/nasm $(ASM_NASM_INCLUDES) $(ASM_NASM_FLAGS) -f elf64 -o CMakeFiles/battleBit_lib.dir/src/assembly_demo.asm.o /home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/assembly_demo.asm
 
 # Object files for target battleBit_lib
@@ -154,6 +167,7 @@ battleBit_lib_OBJECTS = \
 "CMakeFiles/battleBit_lib.dir/src/repl.c.o" \
 "CMakeFiles/battleBit_lib.dir/src/game.c.o" \
 "CMakeFiles/battleBit_lib.dir/src/char_buff.c.o" \
+"CMakeFiles/battleBit_lib.dir/src/helper.c.o" \
 "CMakeFiles/battleBit_lib.dir/src/assembly_demo.asm.o"
 
 # External object files for target battleBit_lib
@@ -164,10 +178,11 @@ libbattleBit_lib.a: CMakeFiles/battleBit_lib.dir/src/server.c.o
 libbattleBit_lib.a: CMakeFiles/battleBit_lib.dir/src/repl.c.o
 libbattleBit_lib.a: CMakeFiles/battleBit_lib.dir/src/game.c.o
 libbattleBit_lib.a: CMakeFiles/battleBit_lib.dir/src/char_buff.c.o
+libbattleBit_lib.a: CMakeFiles/battleBit_lib.dir/src/helper.c.o
 libbattleBit_lib.a: CMakeFiles/battleBit_lib.dir/src/assembly_demo.asm.o
 libbattleBit_lib.a: CMakeFiles/battleBit_lib.dir/build.make
 libbattleBit_lib.a: CMakeFiles/battleBit_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C static library libbattleBit_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C static library libbattleBit_lib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/battleBit_lib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/battleBit_lib.dir/link.txt --verbose=$(VERBOSE)
 

@@ -39,6 +39,7 @@ int handle_client_connect(int player) {
     // This function will end up looking a lot like repl_execute_command, except you will
     // be working against network sockets rather than standard out, and you will need
     // to coordinate turns via the game::status field.
+
 }
 
 void server_broadcast(char_buff *msg) {
@@ -107,12 +108,12 @@ int run_server() {
 int server_start() {
     // STEP 7 - using a pthread, run the run_server() function asynchronously, so you can still
     // interact with the game via the command line REPL
-<<<<<<< HEAD
+//<<<<<<< HEAD
     init_server();
     if (SERVER->server_thread == 0)
         pthread_create(&SERVER->server_thread, NULL, run_server, NULL);
     else
         printf("Server Thread Already Running!");
-=======
->>>>>>> 9482ab881b27e91a56380a24a47d8087a82267d3
+//=======
+//>>>>>>> 9482ab881b27e91a56380a24a47d8087a82267d3
 }

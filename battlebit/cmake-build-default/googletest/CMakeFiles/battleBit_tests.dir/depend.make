@@ -45,6 +45,7 @@ googletest/CMakeFiles/battleBit_tests.dir/game.cpp.o: ../googletest/lib/googlete
 googletest/CMakeFiles/battleBit_tests.dir/game.cpp.o: ../googletest/lib/googletest/include/gtest/internal/gtest-string.h
 googletest/CMakeFiles/battleBit_tests.dir/game.cpp.o: ../googletest/lib/googletest/include/gtest/internal/gtest-type-util.h
 googletest/CMakeFiles/battleBit_tests.dir/game.cpp.o: ../src/game.h
+googletest/CMakeFiles/battleBit_tests.dir/game.cpp.o: ../src/helper.h
 googletest/CMakeFiles/battleBit_tests.dir/game.cpp.o: ../googletest/game.cpp
 
 googletest/CMakeFiles/battleBit_tests.dir/repl.cpp.o: ../googletest/lib/googletest/include/gtest/gtest-death-test.h

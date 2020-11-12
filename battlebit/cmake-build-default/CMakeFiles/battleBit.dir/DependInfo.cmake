@@ -15,6 +15,7 @@ set(CMAKE_ASM_NASM_TARGET_INCLUDE_PATH
 set(CMAKE_DEPENDS_CHECK_C
   "/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/char_buff.c" "/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/CMakeFiles/battleBit.dir/src/char_buff.c.o"
   "/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/game.c" "/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/CMakeFiles/battleBit.dir/src/game.c.o"
+  "/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/helper.c" "/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/CMakeFiles/battleBit.dir/src/helper.c.o"
   "/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/main.c" "/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/CMakeFiles/battleBit.dir/src/main.c.o"
   "/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/repl.c" "/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/CMakeFiles/battleBit.dir/src/repl.c.o"
   "/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/server.c" "/home/timothyb/Documents/csci-366-fall2020-private/battlebit/cmake-build-default/CMakeFiles/battleBit.dir/src/server.c.o"

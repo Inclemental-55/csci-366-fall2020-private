@@ -363,6 +363,36 @@ src/game.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/battleBit_lib.dir/build.make CMakeFiles/battleBit_lib.dir/src/game.c.s
 .PHONY : src/game.c.s
 
+src/helper.o: src/helper.c.o
+
+.PHONY : src/helper.o
+
+# target to build an object file
+src/helper.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/battleBit.dir/build.make CMakeFiles/battleBit.dir/src/helper.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/battleBit_lib.dir/build.make CMakeFiles/battleBit_lib.dir/src/helper.c.o
+.PHONY : src/helper.c.o
+
+src/helper.i: src/helper.c.i
+
+.PHONY : src/helper.i
+
+# target to preprocess a source file
+src/helper.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/battleBit.dir/build.make CMakeFiles/battleBit.dir/src/helper.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/battleBit_lib.dir/build.make CMakeFiles/battleBit_lib.dir/src/helper.c.i
+.PHONY : src/helper.c.i
+
+src/helper.s: src/helper.c.s
+
+.PHONY : src/helper.s
+
+# target to generate assembly for a file
+src/helper.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/battleBit.dir/build.make CMakeFiles/battleBit.dir/src/helper.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/battleBit_lib.dir/build.make CMakeFiles/battleBit_lib.dir/src/helper.c.s
+.PHONY : src/helper.c.s
+
 src/main.o: src/main.c.o
 
 .PHONY : src/main.o
@@ -481,6 +511,9 @@ help:
 	@echo "... src/game.o"
 	@echo "... src/game.i"
 	@echo "... src/game.s"
+	@echo "... src/helper.o"
+	@echo "... src/helper.i"
+	@echo "... src/helper.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -6,21 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/game.c
-stdlib.h
--
+/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/helper.c
 stdio.h
--
-game.h
-/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/game.h
-limits.h
--
-memory.h
--
-ctype.h
--
-
-/home/timothyb/Documents/csci-366-fall2020-private/battlebit/src/game.h
-stdbool.h
 -
 

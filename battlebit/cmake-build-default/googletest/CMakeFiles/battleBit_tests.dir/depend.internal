@@ -46,6 +46,7 @@ googletest/CMakeFiles/battleBit_tests.dir/game.cpp.o
  ../googletest/lib/googletest/include/gtest/internal/gtest-string.h
  ../googletest/lib/googletest/include/gtest/internal/gtest-type-util.h
  ../src/game.h
+ ../src/helper.h
  /home/timothyb/Documents/csci-366-fall2020-private/battlebit/googletest/game.cpp
 googletest/CMakeFiles/battleBit_tests.dir/repl.cpp.o
  ../googletest/lib/googletest/include/gtest/gtest-death-test.h
