@@ -141,7 +141,9 @@ int game_load_board(struct game *game, int player, char *spec) {
                 return -1;
             }
         }
-        game->status = (player == 0) ? CREATED : PLAYER_0_TURN;
+        //game->status = (player == 0) ? CREATED : PLAYER_0_TURN;
+        int opponent = (player == 0) ? 1 : 0;
+        game->status = (game->players[player].ships != 0 && game->players[opponent].ships != 0) ? PLAYER_0_TURN : CREATED;
         return 1; //success! return 1
     } else
         return -1;
