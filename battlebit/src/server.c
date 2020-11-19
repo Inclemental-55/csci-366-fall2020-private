@@ -86,8 +86,10 @@ int handle_client_connect(int player) {
                             cb_append(output_buff, " - HIT");
                             if (game_get_current()->status == PLAYER_1_WINS) {
                                 cb_append(output_buff, " - Player 1 Wins!");
+                                game_init();
                             } else if (game_get_current()->status == PLAYER_0_WINS) {
                                 cb_append(output_buff, " - Player 0 Wins!");
+                                game_init();
                             }
                         } else {
                             cb_append(output_buff, " MISS");

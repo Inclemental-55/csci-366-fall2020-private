@@ -56,20 +56,28 @@ void repl_execute_command(struct char_buff *buffer) {
         } else if (strcmp(command, "server") == 0) {
             server_start();
         } else if (strcmp(command, "show") == 0) {
-
+            struct char_buff *newBuffa = cb_create(2000);
+            if(game_get_current() != NULL) {
+                repl_print_board(game_get_current(), arg1[0] - '0', newBuffa);
+                puts(newBuffa->buffer);
+            }
             // work with repl_print_board
-
         } else if (strcmp(command, "reset") == 0) {
 
             game_init();
 
         } else if (strcmp(command, "load") == 0) {
-
+            if(game_get_current() != NULL){
+                game_load_board(game_get_current(),arg1[0]-'0',arg2);
+            }
             // work with game_load_board
 
         } else if (strcmp(command, "fire") == 0) {
 
             // work with game_fire
+            if (game_get_current() != NULL) {
+                game_fire(game_get_current(), arg1[0] - '0', arg2[0] - '0', arg3[0] - '0');
+            }
 
         } else if (strcmp(command, "nasm") == 0) {
             nasm_hello_world();

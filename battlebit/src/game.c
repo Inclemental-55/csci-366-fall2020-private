@@ -8,12 +8,14 @@
 #include <limits.h>
 #include <memory.h>
 #include <ctype.h>
+#include "pthread.h"
 
 // STEP 10 - Synchronization: the GAME structure will be accessed by both players interacting
 // asynchronously with the server.  Therefore the data must be protected to avoid race conditions.
 // Add the appropriate synchronization needed to ensure a clean battle.
 
 static game *GAME = NULL;
+pthread_mutex_t lock;
 
 void game_init() {
     if (GAME) {
@@ -61,6 +63,7 @@ int game_fire(game *game, int player, int x, int y) {
     //
     //  If the opponents ships value is 0, they have no remaining ships, and you should set the game state to
     //  PLAYER_1_WINS or PLAYER_2_WINS depending on who won.
+    pthread_mutex_lock(&lock);
     unsigned long long int fireBitMask = xy_to_bitval(x, y);
     if (fireBitMask != 0 && game != NULL) {
         int opponentPlayer = (player == 0) ? 1 : 0; //update the player's 'shots' value
@@ -74,11 +77,17 @@ int game_fire(game *game, int player, int x, int y) {
                 game->status = PLAYER_1_WINS;
             else if (game->players[1].ships == 0)
                 game->status = PLAYER_0_WINS;
+            pthread_mutex_unlock(&lock);
             return 1; //caboom
-        } else //miss!
+        } else { //miss!
+            pthread_mutex_unlock(&lock);
             return 0;
-    } else  //invalid
+        }
+    } else {  //invalid
+        pthread_mutex_unlock(&lock);
         return 0;
+    }
+
 }
 
 
@@ -113,6 +122,7 @@ int game_load_board(struct game *game, int player, char *spec) {
     // slot and return 1
     //
     // if it is invalid, you should return -1
+    pthread_mutex_lock(&lock);
     if (spec != NULL && strlen(spec) == 15) { //check for nullity and correct length
         unsigned long long int originalBoard = game->players[player].ships; //our original board
         char ships[] = {'c', 'b', 'd', 's', 'p'}; //acceptable ships
@@ -121,13 +131,17 @@ int game_load_board(struct game *game, int player, char *spec) {
         for (int i = 0; i < 15; i += 3) {
             int length;
             for (int z = 0; z < sizeof(ships); z++) { //check if it is a valid ship, and get the length of the ship
-                if (sizeof(usedShips) >= z && tolower(spec[i]) == tolower(usedShips[z]))  //check for duplicate ships
+                if (sizeof(usedShips) >= z && tolower(spec[i]) == tolower(usedShips[z])) {  //check for duplicate ships
+                    pthread_mutex_unlock(&lock);
                     return -1;
+                }
                 if (tolower(spec[i]) == ships[z]) { //find the ship and get its length
                     length = lengths[z];
                     break;
-                } else if (z == sizeof(ships) - 1)  //if we have reached the end it was not valid, return -1
+                } else if (z == sizeof(ships) - 1) {
+                    pthread_mutex_unlock(&lock);//if we have reached the end it was not valid, return -1
                     return -1;
+                }
             }
             strncat(usedShips, &spec[i], 1); //add the new ship to used ships
             int result; //storage for our result
@@ -138,15 +152,20 @@ int game_load_board(struct game *game, int player, char *spec) {
                                        length);
             if (result == -1) { //if we get a -1 returned, reset the board and return a -1
                 game->players[player].ships = originalBoard;
+                pthread_mutex_unlock(&lock);
                 return -1;
             }
         }
         //game->status = (player == 0) ? CREATED : PLAYER_0_TURN;
         int opponent = (player == 0) ? 1 : 0;
-        game->status = (game->players[player].ships != 0 && game->players[opponent].ships != 0) ? PLAYER_0_TURN : CREATED;
+        game->status = (game->players[player].ships != 0 && game->players[opponent].ships != 0) ? PLAYER_0_TURN
+                                                                                                : CREATED;
+        pthread_mutex_unlock(&lock);
         return 1; //success! return 1
-    } else
+    } else {
+        pthread_mutex_unlock(&lock);
         return -1;
+    }
 }
 
 /**
